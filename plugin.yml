@@ -1,0 +1,19 @@
+name: Annihilation
+main: com.gmail.nuclearcat1337.main.AnnihilationMain
+version: 1.0.0
+authors: [presidentepro,policeman17]
+description: Plugin para nimbocraft.By presidentepro & policeman17 ( usasergio)
+commands:
+  Anni:
+    description: provides commands for the Annihilation game
+  Team:
+    description: Command related to annihilation team
+  Area:
+    description: Command for managing annihilation areas
+permissions:
+  A.anni:
+    description: gives permission to use the anni command
+    default: op
+  A.Area:
+    description: gives permission to use the anni command
+    default: op
