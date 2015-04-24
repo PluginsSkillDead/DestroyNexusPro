@@ -1,13 +1,13 @@
 package com.github.PluginSkillDead.anniGame;
 
-import com.gmail.nuclearcat1337.anniEvents.AnniEvent;
-import com.gmail.nuclearcat1337.anniEvents.AnnihilationEvent;
-import com.gmail.nuclearcat1337.anniEvents.GameEndEvent;
-import com.gmail.nuclearcat1337.anniEvents.GameStartEvent;
-import com.gmail.nuclearcat1337.enderFurnace.AbstractFurnace;
-import com.gmail.nuclearcat1337.enderFurnace.EnderFurnace;
-import com.gmail.nuclearcat1337.kits.CustomItem;
-import com.gmail.nuclearcat1337.kits.Kit;
+import com.github.PluginSkillDead.anniEvents.AnniEvent;
+import com.github.PluginSkillDead.anniEvents.AnnihilationEvent;
+import com.github.PluginSkillDead.anniEvents.GameEndEvent;
+import com.github.PluginSkillDead.anniEvents.GameStartEvent;
+import com.github.PluginSkillDead.enderFurnace.AbstractFurnace;
+import com.github.PluginSkillDead.enderFurnace.EnderFurnace;
+import com.github.PluginSkillDead.kits.CustomItem;
+import com.github.PluginSkillDead.kits.Kit;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;

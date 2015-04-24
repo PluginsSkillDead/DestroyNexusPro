@@ -1,7 +1,7 @@
 package com.github.PluginSkillDead.anniEvents;
 
-import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
-import com.gmail.nuclearcat1337.mapBuilder.RegeneratingBlock;
+import com.github.PluginSkillDead.anniGame.AnniPlayer;
+import com.github.PluginSkillDead.mapBuilder.RegeneratingBlock;
 import org.bukkit.inventory.ItemStack;
 
 public class ResourceBreakEvent extends CancelableAnniPlayerEvent

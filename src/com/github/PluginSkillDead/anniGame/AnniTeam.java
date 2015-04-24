@@ -1,7 +1,7 @@
 package com.github.PluginSkillDead.anniGame;
 
-import com.gmail.nuclearcat1337.main.ScoreboardAPI;
-import com.gmail.nuclearcat1337.utils.Loc;
+import com.github.PluginSkillDead.main.ScoreboardAPI;
+import com.github.PluginSkillDead.utils.Loc;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;

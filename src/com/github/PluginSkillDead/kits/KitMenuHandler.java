@@ -1,8 +1,8 @@
 package com.github.PluginSkillDead.kits;
 
-import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
-import com.gmail.nuclearcat1337.anniGame.Game;
-import com.gmail.nuclearcat1337.utils.IconMenu.OptionClickEvent;
+import com.github.PluginSkillDead.anniGame.AnniPlayer;
+import com.github.PluginSkillDead.anniGame.Game;
+import com.github.PluginSkillDead.utils.IconMenu.OptionClickEvent;
 import com.gmail.nuclearcat1337.utils.IconMenu.OptionClickEventHandler;
 import java.util.Map;
 import org.bukkit.ChatColor;

@@ -1,6 +1,6 @@
 package com.github.PluginSkillDead.anniEvents;
 
-import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
+import com.github.PluginSkillDead.anniGame.AnniPlayer;
 
 abstract class AnniPlayerEvent extends AnniEvent
 {

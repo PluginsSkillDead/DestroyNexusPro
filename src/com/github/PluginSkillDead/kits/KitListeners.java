@@ -1,6 +1,6 @@
 package com.github.PluginSkillDead.kits;
 
-import com.gmail.nuclearcat1337.utils.IconMenu;
+import com.github.PluginSkillDead.utils.IconMenu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

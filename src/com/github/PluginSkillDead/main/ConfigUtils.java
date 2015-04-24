@@ -1,6 +1,6 @@
 package com.github.PluginSkillDead.main;
 
-import com.gmail.nuclearcat1337.utils.Loc;
+import com.github.PluginSkillDead.utils.Loc;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;

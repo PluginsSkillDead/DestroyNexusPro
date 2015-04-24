@@ -1,8 +1,8 @@
 package com.github.PluginSkillDead.anniGame;
 
-import com.gmail.nuclearcat1337.main.ConfigUtils;
-import com.gmail.nuclearcat1337.phaseAPI.PhaseAPI;
-import com.gmail.nuclearcat1337.utils.Loc;
+import com.github.PluginSkillDead.main.ConfigUtils;
+import com.github.PluginSkillDead.phaseAPI.PhaseAPI;
+import com.github.PluginSkillDead.utils.Loc;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

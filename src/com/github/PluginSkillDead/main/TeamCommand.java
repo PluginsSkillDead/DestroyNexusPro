@@ -1,8 +1,8 @@
 package com.github.PluginSkillDead.main;
 
-import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
-import com.gmail.nuclearcat1337.anniGame.AnniTeam;
-import com.gmail.nuclearcat1337.anniGame.Game;
+import com.github.PluginSkillDead.anniGame.AnniPlayer;
+import com.github.PluginSkillDead.anniGame.AnniTeam;
+import com.github.PluginSkillDead.anniGame.Game;
 import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

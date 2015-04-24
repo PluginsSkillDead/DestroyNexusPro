@@ -1,7 +1,7 @@
 package com.github.PluginSkillDead.utils;
 
-import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
-import com.gmail.nuclearcat1337.anniGame.AnniTeam;
+import com.github.PluginSkillDead.anniGame.AnniPlayer;
+import com.github.PluginSkillDead.anniGame.AnniTeam;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;

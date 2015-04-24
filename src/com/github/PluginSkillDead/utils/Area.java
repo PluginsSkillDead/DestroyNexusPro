@@ -1,9 +1,9 @@
 package com.github.PluginSkillDead.utils;
 
-import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
-import com.gmail.nuclearcat1337.kits.CustomItem;
-import com.gmail.nuclearcat1337.kits.KitUtils;
-import com.gmail.nuclearcat1337.main.ConfigUtils;
+import com.github.PluginSkillDead.anniGame.AnniPlayer;
+import com.github.PluginSkillDead.kits.CustomItem;
+import com.github.PluginSkillDead.kits.KitUtils;
+import com.github.PluginSkillDead.main.ConfigUtils;
 import java.util.HashMap;
 import java.util.Map;
 import org.bukkit.Bukkit;

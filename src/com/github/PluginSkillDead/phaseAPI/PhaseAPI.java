@@ -1,8 +1,8 @@
 package com.github.PluginSkillDead.phaseAPI;
 
-import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
-import com.gmail.nuclearcat1337.anniGame.Game;
-import com.gmail.nuclearcat1337.anniGame.PhaseHandler;
+import com.github.PluginSkillDead.anniGame.AnniPlayer;
+import com.github.PluginSkillDead.anniGame.Game;
+import com.github.PluginSkillDead.anniGame.PhaseHandler;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;

@@ -1,8 +1,8 @@
 package com.github.PluginSkillDead.anniGame;
 
-import com.gmail.nuclearcat1337.anniEvents.AnniEvent;
-import com.gmail.nuclearcat1337.anniEvents.GameEndEvent;
-import com.gmail.nuclearcat1337.anniEvents.GameStartEvent;
+import com.github.PluginSkillDead.anniEvents.AnniEvent;
+import com.github.PluginSkillDead.anniEvents.GameEndEvent;
+import com.github.PluginSkillDead.anniEvents.GameStartEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;

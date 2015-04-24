@@ -1,8 +1,8 @@
 package com.github.PluginSkillDead.mapBuilder;
 
-import com.gmail.nuclearcat1337.anniEvents.AnniEvent;
-import com.gmail.nuclearcat1337.anniEvents.ResourceBreakEvent;
-import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
+import com.github.PluginSkillDead.anniEvents.AnniEvent;
+import com.github.PluginSkillDead.anniEvents.ResourceBreakEvent;
+import com.github.PluginSkillDead.anniGame.AnniPlayer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package com.github.PluginSkillDead.anniEvents;
 
-import com.gmail.nuclearcat1337.anniGame.AnniTeam;
+import com.github.PluginSkillDead.anniGame.AnniTeam;
 
 public final class GameEndEvent extends AnniEvent
 {

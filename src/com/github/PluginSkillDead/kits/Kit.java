@@ -1,6 +1,6 @@
 package com.github.PluginSkillDead.kits;
 
-import com.gmail.nuclearcat1337.anniEvents.AnniEvent;
+import com.github.PluginSkillDead.anniEvents.AnniEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;

@@ -1,8 +1,8 @@
 package com.github.PluginSkillDead.main;
 
-import com.gmail.nuclearcat1337.anniGame.Game;
-import com.gmail.nuclearcat1337.kits.CustomItem;
-import com.gmail.nuclearcat1337.mapBuilder.MapBuilder;
+import com.github.PluginSkillDead.anniGame.Game;
+import com.github.PluginSkillDead.kits.CustomItem;
+import com.github.PluginSkillDead.mapBuilder.MapBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

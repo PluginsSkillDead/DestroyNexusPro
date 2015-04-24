@@ -1,8 +1,8 @@
 package com.github.PluginSkillDead.anniGame;
 
-import com.gmail.nuclearcat1337.kits.CustomItem;
-import com.gmail.nuclearcat1337.kits.Kit;
-import com.gmail.nuclearcat1337.utils.Loc;
+import com.github.PluginSkillDead.kits.CustomItem;
+import com.github.PluginSkillDead.kits.Kit;
+import com.github.PluginSkillDead.utils.Loc;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

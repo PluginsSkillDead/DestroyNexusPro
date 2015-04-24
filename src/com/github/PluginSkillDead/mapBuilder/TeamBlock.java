@@ -1,7 +1,7 @@
 package com.github.PluginSkillDead.mapBuilder;
 
-import com.gmail.nuclearcat1337.anniGame.AnniTeam;
-import com.gmail.nuclearcat1337.kits.KitUtils;
+import com.github.PluginSkillDead.anniGame.AnniTeam;
+import com.github.PluginSkillDead.kits.KitUtils;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.ChatColor;

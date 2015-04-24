@@ -1,6 +1,6 @@
 package com.github.PluginSkillDead.phaseAPI;
 
-import com.gmail.nuclearcat1337.main.AnnihilationMain;
+import com.github.PluginSkillDead.main.AnnihilationMain;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
