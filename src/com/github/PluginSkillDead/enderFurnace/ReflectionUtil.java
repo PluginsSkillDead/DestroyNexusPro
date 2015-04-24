@@ -1,4 +1,4 @@
-package enderFurnace;
+package com.github.PluginSkillDead.enderFurnace;
 
 import java.lang.reflect.Field;
 
@@ -12,7 +12,7 @@ public class ReflectionUtil
     field.setAccessible(true);
     field.set(instance, value);
   }
-  
+
   public static void setValue(Object instance, String fieldName, Object value)
     throws Exception
   {

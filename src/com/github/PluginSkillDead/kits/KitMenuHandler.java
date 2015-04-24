@@ -1,4 +1,4 @@
-package kits;
+package com.github.PluginSkillDead.kits;
 
 import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
 import com.gmail.nuclearcat1337.anniGame.Game;
@@ -12,12 +12,12 @@ public class KitMenuHandler
   implements IconMenu.OptionClickEventHandler
 {
   private final Map<String, Kit> KitMap;
-  
+
   public KitMenuHandler(Map<String, Kit> kitMap)
   {
     this.KitMap = kitMap;
   }
-  
+
   public void onOptionClick(IconMenu.OptionClickEvent event)
   {
     Player player = event.getPlayer();
@@ -26,17 +26,16 @@ public class KitMenuHandler
       event.setWillClose(true);
       AnniPlayer anniplayer = AnniPlayer.getPlayer(player.getUniqueId());
       Kit k = (Kit)this.KitMap.get(event.getName());
-      if ((k != null) && (anniplayer != null)) {
+      if ((k != null) && (anniplayer != null))
+      {
         if (k.canSelect(player))
         {
-          if ((Game.isGameRunning()) && (anniplayer.getKit() != null)) {
+          if ((Game.isGameRunning()) && (anniplayer.getKit() != null))
             anniplayer.getKit().cleanup(player);
-          }
           anniplayer.setKit(k);
           player.sendMessage(ChatColor.DARK_PURPLE + k.getName() + " selected.");
-          if (Game.isGameRunning()) {
+          if (Game.isGameRunning())
             player.setHealth(0.0D);
-          }
         }
       }
     }

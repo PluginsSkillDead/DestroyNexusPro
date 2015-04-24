@@ -1,5 +1,4 @@
-package kits;
-
+package com.github.PluginSkillDead.kits;
 
 import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
 import com.gmail.nuclearcat1337.anniGame.AnniTeam;
@@ -23,83 +22,72 @@ public class KitUtils
     addSoulbound(new ItemStack(Material.LEATHER_LEGGINGS)), 
     addSoulbound(new ItemStack(Material.LEATHER_CHESTPLATE)), 
     addSoulbound(new ItemStack(Material.LEATHER_HELMET)) };
-  
+
   public static boolean isSoulbound(ItemStack stack)
   {
     ItemMeta meta = stack.getItemMeta();
-    if (meta == null) {
+    if (meta == null)
       return false;
-    }
-    List<String> lore = meta.getLore();
-    if (lore == null) {
+    List lore = meta.getLore();
+    if (lore == null)
       return false;
-    }
     return lore.contains(ChatColor.GOLD + "Soulbound");
   }
-  
+
   public static ItemStack addSoulbound(ItemStack stack)
   {
-    if (stack == null) {
+    if (stack == null)
       return stack;
-    }
     ItemMeta meta = stack.getItemMeta();
-    if (meta == null) {
+    if (meta == null)
       meta = Bukkit.getItemFactory().getItemMeta(stack.getType());
-    }
-    List<String> lore = meta.getLore();
-    if (lore == null) {
+    List lore = meta.getLore();
+    if (lore == null)
       lore = new ArrayList();
-    }
     lore.add(ChatColor.GOLD + "Soulbound");
     meta.setLore(lore);
     stack.setItemMeta(meta);
     return stack;
   }
-  
+
   public static ItemStack addEnchant(ItemStack s, Enchantment m, int level)
   {
     s.addUnsafeEnchantment(m, level);
     return s;
   }
-  
+
   public static boolean itemHasName(ItemStack stack, String name)
   {
-    if (stack == null) {
+    if (stack == null)
       return false;
-    }
     ItemMeta meta = stack.getItemMeta();
-    if (meta == null) {
+    if (meta == null)
       return false;
-    }
-    if (!meta.hasDisplayName()) {
+    if (!meta.hasDisplayName())
       return false;
-    }
     return meta.getDisplayName().equalsIgnoreCase(name);
   }
-  
+
   public static ItemStack[] coloredArmor(AnniTeam team)
   {
     Color c;
     Color c;
-    if (team.Color == ChatColor.RED)
-    {
+    if (team.Color == ChatColor.RED) {
       c = Color.RED;
     }
     else
     {
       Color c;
-      if (team.Color == ChatColor.BLUE)
-      {
+      if (team.Color == ChatColor.BLUE) {
         c = Color.BLUE;
       }
       else
       {
         Color c;
-        if (team.Color == ChatColor.GREEN) {
+        if (team.Color == ChatColor.GREEN)
           c = Color.GREEN;
-        } else {
-          c = Color.YELLOW;
-        }
+        else
+          c = Color.YELLOW; 
       }
     }
     for (ItemStack stack : armor)
@@ -110,14 +98,15 @@ public class KitUtils
     }
     return armor;
   }
-  
+
   public static void giveTeamArmor(Player player)
   {
     AnniPlayer pl = AnniPlayer.getPlayer(player.getUniqueId());
     if (pl != null)
     {
       AnniTeam t = pl.getTeam();
-      if (t != null) {
+      if (t != null)
+      {
         player.getInventory().setArmorContents(coloredArmor(t));
       }
     }

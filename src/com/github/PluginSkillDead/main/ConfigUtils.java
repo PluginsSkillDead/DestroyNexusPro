@@ -1,5 +1,4 @@
-package main;
-
+package com.github.PluginSkillDead.main;
 
 import com.gmail.nuclearcat1337.utils.Loc;
 import org.bukkit.Bukkit;
@@ -19,12 +18,12 @@ public class ConfigUtils
       section.set("World", location.getWorld().getName());
     }
   }
-  
+
   public static void saveLocation(Loc location, ConfigurationSection section)
   {
     saveLocation(location.toLocation(), section);
   }
-  
+
   public static void savePreciseLocation(Location location, ConfigurationSection section)
   {
     if ((section != null) && (location != null))
@@ -37,41 +36,41 @@ public class ConfigUtils
       section.set("World", location.getWorld().getName());
     }
   }
-  
+
   public static void savePreciseLocation(Loc location, ConfigurationSection section)
   {
     saveLocation(location.toLocation(), section);
   }
-  
+
   public static Location getPreciseLocation(ConfigurationSection section)
   {
     if (section == null) {
       return null;
     }
+
     double x = section.getDouble("X");
     double y = section.getDouble("Y");
     double z = section.getDouble("Z");
     double pitch = section.getDouble("Pitch");
     double yaw = section.getDouble("Yaw");
     String world = section.getString("World");
-    if (world == null) {
+    if (world == null)
       return null;
-    }
     return new Location(Bukkit.getWorld(world), x, y, z, (float)yaw, (float)pitch);
   }
-  
+
   public static Location getLocation(ConfigurationSection section)
   {
     if (section == null) {
       return null;
     }
+
     int x = section.getInt("X");
     int y = section.getInt("Y");
     int z = section.getInt("Z");
     String world = section.getString("World");
-    if (world == null) {
+    if (world == null)
       return null;
-    }
     return new Location(Bukkit.getWorld(world), x, y, z);
   }
 }

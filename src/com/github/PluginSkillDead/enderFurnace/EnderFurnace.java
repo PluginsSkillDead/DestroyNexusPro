@@ -1,4 +1,4 @@
-package enderFurnace;
+package com.github.PluginSkillDead.enderFurnace;
 
 import net.minecraft.server.v1_7_R3.Block;
 import net.minecraft.server.v1_7_R3.Blocks;
@@ -15,13 +15,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-public class EnderFurnace
-  extends TileEntityFurnace
+public class EnderFurnace extends TileEntityFurnace
   implements AbstractFurnace
 {
   private EntityPlayer owningPlayer;
   private int id;
-  
+
   public EnderFurnace(Player p, int i)
   {
     EntityPlayer player = ((CraftPlayer)p).getHandle();
@@ -37,22 +36,22 @@ public class EnderFurnace
       e.printStackTrace();
     }
   }
-  
+
   public boolean a(EntityHuman entityhuman)
   {
     return true;
   }
-  
+
   public int p()
   {
     return 0;
   }
-  
+
   public Block q()
   {
     return Blocks.FURNACE;
   }
-  
+
   public InventoryHolder getOwner()
   {
     Furnace furnace = new CraftFurnace(this.world.getWorld().getBlockAt(0, 
@@ -67,27 +66,27 @@ public class EnderFurnace
     }
     return furnace;
   }
-  
+
   public void open()
   {
     this.owningPlayer.openFurnace(this);
   }
-  
+
   public int getId()
   {
     return this.id;
   }
-  
+
   public void tick()
   {
     h();
   }
-  
+
   public void setItemStack(int i, ItemStack itemstack)
   {
     setItem(i, CraftItemStack.asNMSCopy(itemstack));
   }
-  
+
   public ItemStack getItemStack(int i)
   {
     return CraftItemStack.asBukkitCopy(getItem(i));

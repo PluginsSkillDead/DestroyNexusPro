@@ -1,5 +1,4 @@
-package phaseAPI;
-
+package com.github.PluginSkillDead.phaseAPI;
 
 import com.gmail.nuclearcat1337.main.AnnihilationMain;
 import java.lang.reflect.Constructor;
@@ -17,7 +16,7 @@ public class Util
   public static boolean newProtocol = false;
   public static String version;
   public static Class<?> fakeDragonClass = v1_7.class;
-  
+
   static
   {
     if (AnnihilationMain.useProtocalHack)
@@ -30,22 +29,26 @@ public class Util
       String name = Bukkit.getServer().getClass().getPackage().getName();
       String mcVersion = name.substring(name.lastIndexOf('.') + 1);
       String[] versions = mcVersion.split("_");
+
       if ((versions[0].equals("v1")) && (Integer.parseInt(versions[1]) > 6))
       {
         newProtocol = true;
         fakeDragonClass = v1_7.class;
       }
+
       version = mcVersion + ".";
     }
   }
-  
+
   public static FakeDragon newDragon(String message, Location loc)
   {
     FakeDragon fakeDragon = null;
     try
     {
       fakeDragon = 
-        (FakeDragon)fakeDragonClass.getConstructor(new Class[] { String.class, Location.class }).newInstance(new Object[] { message, loc });
+        (FakeDragon)fakeDragonClass.getConstructor(new Class[] { 
+        String.class, Location.class }).newInstance(new Object[] { 
+        message, loc });
     }
     catch (IllegalArgumentException e)
     {
@@ -71,9 +74,10 @@ public class Util
     {
       e.printStackTrace();
     }
+
     return fakeDragon;
   }
-  
+
   public static void sendPacket(Player p, Object packet)
   {
     try
@@ -105,11 +109,11 @@ public class Util
       e.printStackTrace();
     }
   }
-  
+
   public static Class<?> getCraftClass(String ClassName)
   {
     String className = "net.minecraft.server." + version + ClassName;
-    Class<?> c = null;
+    Class c = null;
     try
     {
       c = Class.forName(className);
@@ -120,7 +124,7 @@ public class Util
     }
     return c;
   }
-  
+
   public static Object getHandle(World world)
   {
     Object nms_entity = null;
@@ -143,7 +147,7 @@ public class Util
     }
     return nms_entity;
   }
-  
+
   public static Object getHandle(Entity entity)
   {
     Object nms_entity = null;
@@ -166,7 +170,7 @@ public class Util
     }
     return nms_entity;
   }
-  
+
   public static Field getField(Class<?> cl, String field_name)
   {
     try
@@ -183,52 +187,60 @@ public class Util
     }
     return null;
   }
-  
+
   public static Method getMethod(Class<?> cl, String method, Class<?>[] args)
   {
-    for (Method m : cl.getMethods()) {
+    for (Method m : cl.getMethods())
+    {
       if ((m.getName().equals(method)) && 
-        (ClassListEqual(args, m.getParameterTypes()))) {
+        (ClassListEqual(args, m.getParameterTypes())))
+      {
         return m;
       }
     }
     return null;
   }
-  
+
   public static Method getMethod(Class<?> cl, String method, Integer args)
   {
-    for (Method m : cl.getMethods()) {
+    for (Method m : cl.getMethods())
+    {
       if ((m.getName().equals(method)) && 
-        (args.equals(new Integer(m.getParameterTypes().length)))) {
+        (args.equals(new Integer(m.getParameterTypes().length))))
+      {
         return m;
       }
     }
     return null;
   }
-  
+
   public static Method getMethod(Class<?> cl, String method)
   {
-    for (Method m : cl.getMethods()) {
-      if (m.getName().equals(method)) {
+    for (Method m : cl.getMethods())
+    {
+      if (m.getName().equals(method))
+      {
         return m;
       }
     }
     return null;
   }
-  
+
   public static boolean ClassListEqual(Class<?>[] l1, Class<?>[] l2)
   {
     boolean equal = true;
-    if (l1.length != l2.length) {
+
+    if (l1.length != l2.length)
       return false;
-    }
-    for (int i = 0; i < l1.length; i++) {
+    for (int i = 0; i < l1.length; i++)
+    {
       if (l1[i] != l2[i])
       {
         equal = false;
         break;
       }
     }
+
     return equal;
   }
 }

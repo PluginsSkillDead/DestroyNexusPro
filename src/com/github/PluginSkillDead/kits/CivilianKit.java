@@ -1,4 +1,4 @@
-package kits;
+package com.github.PluginSkillDead.kits;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -6,21 +6,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-public class CivilianKit
-  extends Kit
+public class CivilianKit extends Kit
 {
   private static final ItemStack Sword = KitUtils.addSoulbound(new ItemStack(Material.WOOD_SWORD));
   private static final ItemStack Pick = KitUtils.addSoulbound(new ItemStack(Material.WOOD_PICKAXE));
   private static final ItemStack Axe = KitUtils.addSoulbound(new ItemStack(Material.WOOD_AXE));
   private static final ItemStack CraftingTable = KitUtils.addSoulbound(new ItemStack(Material.WORKBENCH, 1));
-  
-  public void Initialize() {}
-  
+
+  public void Initialize()
+  {
+  }
+
   public String getName()
   {
     return "Civilian";
   }
-  
+
   public IconPackage getIconPackage()
   {
     return new IconPackage(new ItemStack(Material.WOOD_SWORD), 
@@ -32,7 +33,7 @@ public class CivilianKit
       ChatColor.GREEN + "The Default Kit. Spawns with a set of", 
       ChatColor.GREEN + "wood tools (not shovel)" });
   }
-  
+
   public void onPlayerSpawn(Player player)
   {
     KitUtils.giveTeamArmor(player);
@@ -41,9 +42,11 @@ public class CivilianKit
     player.getInventory().addItem(new ItemStack[] { Axe });
     player.getInventory().addItem(new ItemStack[] { CraftingTable });
   }
-  
-  public void cleanup(Player player) {}
-  
+
+  public void cleanup(Player player)
+  {
+  }
+
   public boolean canSelect(Player player)
   {
     return true;

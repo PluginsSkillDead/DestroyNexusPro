@@ -1,10 +1,10 @@
-package enderFurnace;
+package com.github.PluginSkillDead.enderFurnace;
 
 public abstract interface AbstractFurnace
 {
   public abstract void tick();
-  
+
   public abstract void open();
-  
+
   public abstract int getId();
 }

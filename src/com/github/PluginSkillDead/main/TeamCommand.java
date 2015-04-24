@@ -1,5 +1,4 @@
-package main;
-
+package com.github.PluginSkillDead.main;
 
 import com.gmail.nuclearcat1337.anniGame.AnniPlayer;
 import com.gmail.nuclearcat1337.anniGame.AnniTeam;
@@ -15,13 +14,13 @@ import org.bukkit.entity.Player;
 public class TeamCommand
   implements CommandExecutor
 {
+  private ChatColor r = ChatColor.RED;
+
   public TeamCommand(AnnihilationMain plugin)
   {
     plugin.getCommand("Team").setExecutor(this);
   }
-  
-  private ChatColor r = ChatColor.RED;
-  
+
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
   {
     if ((sender instanceof Player))
@@ -51,38 +50,30 @@ public class TeamCommand
               sender.sendMessage(ChatColor.DARK_PURPLE + "You left " + p.getTeam().Color + p.getTeam().getName() + " Team");
               ScoreboardAPI.removePlayer(p.getTeam(), p.getPlayer());
               p.setTeam(null);
-            }
-            else
-            {
+            } else {
               sender.sendMessage(ChatColor.RED + "You do not have a team to leave.");
             }
-          }
-          else {
-            sender.sendMessage(ChatColor.RED + "You cannot leave a team while the game is running.");
-          }
+          } else sender.sendMessage(ChatColor.RED + "You cannot leave a team while the game is running.");
         }
         else
         {
           AnniTeam t = AnniTeam.getTeamByName(args[0]);
-          if (t != null) {
+          if (t != null)
+          {
             attemptJoin(t, p);
-          } else {
+          }
+          else
+          {
             sender.sendMessage(this.r + "Invalid Team specified!");
           }
         }
-      }
-      else
-      {
-        sender.sendMessage("/Team [Name] (Red,Green,Blue,Yellow)");
-      }
+      } else { sender.sendMessage("/Team [Name] (Red,Green,Blue,Yellow)"); }
     }
-    else
-    {
+    else {
       sender.sendMessage(this.r + "This command can only be used by a player!");
-    }
-    return true;
+    }return true;
   }
-  
+
   private void attemptJoin(AnniTeam team, AnniPlayer p)
   {
     if ((p != null) && (team != null))
@@ -101,6 +92,7 @@ public class TeamCommand
               player.sendMessage(ChatColor.RED + "You Cannot Join a Team Whose Nexus is Destroyed!");
               return;
             }
+
             int x = ScoreboardAPI.getPlayerCount(team);
             Integer[] counts = ScoreboardAPI.teamCounts();
             if (x + 1 - counts[0].intValue() > 2)
@@ -108,21 +100,16 @@ public class TeamCommand
               player.sendMessage(ChatColor.RED + "This team is currently full!");
               return;
             }
+
             p.setTeam(team);
             ScoreboardAPI.addPlayer(team, player);
             player.sendMessage(ChatColor.DARK_PURPLE + "You have joined " + team.Color + team.toString() + ChatColor.DARK_PURPLE + " Team");
-            if (Game.isGameRunning()) {
+            if (Game.isGameRunning())
               player.setHealth(0.0D);
-            }
-          }
-          else
-          {
+          } else {
             player.sendMessage(ChatColor.RED + "You Already Have a Team!");
           }
-        }
-        else {
-          player.sendMessage(ChatColor.RED + "You cannot join a team after Phase 2");
-        }
+        } else player.sendMessage(ChatColor.RED + "You cannot join a team after Phase 2");
       }
     }
   }

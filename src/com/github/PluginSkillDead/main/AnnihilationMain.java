@@ -1,5 +1,4 @@
-package main;
-
+package com.github.PluginSkillDead.main;
 
 import com.gmail.nuclearcat1337.anniEvents.AnniEvent;
 import com.gmail.nuclearcat1337.anniEvents.AnnihilationEvent;
@@ -45,27 +44,22 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class AnnihilationMain
-  extends JavaPlugin
+public class AnnihilationMain extends JavaPlugin
   implements Listener
 {
   public static boolean useProtocalHack = false;
   public static final String Name = "Annihilation";
   private FileConfiguration config;
   private File configFile;
-  
+
   public void onEnable()
   {
     SignHandler.registerListeners(this);
     RegeneratingBlock.registerListeners(this);
     Area.registerListeners(this);
     AnniEvent.registerListener(this);
-    
-
 
     loadVars();
-    
-
 
     World world = Bukkit.getWorld(Game.GameWorld);
     if (world != null)
@@ -74,14 +68,15 @@ public class AnnihilationMain
       world.setGameRuleValue("doFireTick", "false");
     }
     AnniPlayer.RegisterListener(this);
-    if (Game.LobbyLocation != null) {
+    if (Game.LobbyLocation != null)
+    {
       for (AnniPlayer p : AnniPlayer.getPlayers().values())
       {
         Player pl = p.getPlayer();
         if (pl != null)
         {
           pl.getInventory().clear();
-          
+
           pl.getInventory().setArmorContents(null);
           pl.teleport(Game.LobbyLocation);
           pl.getInventory().addItem(new ItemStack[] { CustomItem.KITMAP.toItemStack(1) });
@@ -90,16 +85,14 @@ public class AnnihilationMain
     }
     ScoreboardAPI.registerListener(this);
     new AnniCommand(this);
-    
+
     new PhaseAPI(this);
     new TeamCommand(this);
     new GameListeners(this);
-    
 
     PhaseAPI.setPhaseHandler(new StandardPhaseHandler());
-    
+
     new KitListeners(this);
-    
 
     new BukkitRunnable()
     {
@@ -107,9 +100,10 @@ public class AnnihilationMain
       {
         Bukkit.broadcastMessage(ChatColor.GREEN + "You have loaded the trial version of Annihilation, " + ChatColor.LIGHT_PURPLE + "Annihilation Lite!");
       }
-    }.runTaskLater(this, 20L);
+    }
+    .runTaskLater(this, 20L);
   }
-  
+
   @AnnihilationEvent
   public void onGameStart(GameStartEvent event)
   {
@@ -126,13 +120,15 @@ public class AnnihilationMain
         player.teleport(p.getTeam().getRandomSpawn());
         p.getKit().onPlayerSpawn(player);
       }
+
     }
+
     PhaseAPI.beginPhase(1);
     Game.Phase = 1;
     Game.NexusInvincible = true;
     ScoreboardAPI.showBoard(ChatColor.GOLD + "Map: " + (Game.GameWorld.equals(" ") ? "Test" : Game.GameWorld));
   }
-  
+
   @AnnihilationEvent
   public void onGameEnd(GameEndEvent event)
   {
@@ -140,32 +136,32 @@ public class AnnihilationMain
     Game.Phase = 0;
     Game.NexusInvincible = true;
     ScoreboardAPI.resetScoreboard();
-    if (event.getWinningTeam() != null) {
+
+    if (event.getWinningTeam() != null)
       Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "The game has eneded! " + event.getWinningTeam().Color + event.getWinningTeam().getName() + " Team " + ChatColor.DARK_PURPLE + "has won!");
-    }
   }
-  
+
   public void onDisable()
   {
     PhaseAPI.Disable();
     saveStuff();
-    
 
     Bukkit.broadcastMessage(ChatColor.GREEN + "Thank you for using the trial version of Annihilation, " + ChatColor.LIGHT_PURPLE + "Annihilation Lite!");
   }
-  
+
   public void saveStuff()
   {
     this.config.set("GameWorldName", Game.GameWorld);
     Loc nexusLoc;
     int counter;
     Iterator localIterator2;
-    for (Iterator localIterator1 = AnniTeam.Teams.iterator(); localIterator1.hasNext(); localIterator2.hasNext())
+    for (Iterator localIterator1 = AnniTeam.Teams.iterator(); localIterator1.hasNext(); 
+      localIterator2.hasNext())
     {
       AnniTeam team = (AnniTeam)localIterator1.next();
-      
+
       ConfigurationSection teamSection = this.config.createSection(team.getName() + " Team");
-      
+
       nexusLoc = team.Nexus.getLocation();
       if (nexusLoc != null) {
         ConfigUtils.saveLocation(nexusLoc, teamSection.createSection("Nexus.Location"));
@@ -175,16 +171,19 @@ public class AnnihilationMain
         ConfigUtils.saveLocation(spectatorspawn, teamSection.createSection("SpectatorLocation"));
       }
       ConfigurationSection spawnSection = teamSection.createSection("Spawns");
-      List<Loc> spawns = team.getSpawnList();
-      if ((spawns != null) && (!spawns.isEmpty())) {
-        for (int x = 0; x < spawns.size(); x++) {
+      List spawns = team.getSpawnList();
+      if ((spawns != null) && (!spawns.isEmpty()))
+      {
+        for (int x = 0; x < spawns.size(); x++)
+        {
           ConfigUtils.savePreciseLocation((Loc)spawns.get(x), spawnSection.createSection(x));
         }
       }
       ConfigurationSection signSection = teamSection.createSection("Signs");
-      Map<String, SignHandler.JoinSign> teamsigns = SignHandler.getTeamSigns();
+      Map teamsigns = SignHandler.getTeamSigns();
       counter = 1;
-      localIterator2 = teamsigns.entrySet().iterator(); continue;Map.Entry<String, SignHandler.JoinSign> entry = (Map.Entry)localIterator2.next();
+      localIterator2 = teamsigns.entrySet().iterator(); continue; Map.Entry entry = (Map.Entry)localIterator2.next();
+
       if (((SignHandler.JoinSign)entry.getValue()).TeamName.equals(team.getName()))
       {
         ConfigUtils.saveLocation(Loc.fromMapKey((String)entry.getKey()), signSection.createSection(counter + ".Location"));
@@ -192,11 +191,13 @@ public class AnnihilationMain
         signSection.set(counter + ".SignPost", Boolean.valueOf(((SignHandler.JoinSign)entry.getValue()).signPost));
         counter++;
       }
+
     }
+
     ConfigurationSection brewingSignsSection = this.config.createSection("BrewingSigns");
     int counter = 1;
     Loc loc;
-    for (Map.Entry<String, SignHandler.ShopSign> entry : SignHandler.getBrewingSigns().entrySet())
+    for (Map.Entry entry : SignHandler.getBrewingSigns().entrySet())
     {
       loc = Loc.fromMapKey((String)entry.getKey());
       ConfigUtils.saveLocation(loc, brewingSignsSection.createSection(counter + ".Location"));
@@ -204,10 +205,11 @@ public class AnnihilationMain
       brewingSignsSection.set(counter + ".SignPost", Boolean.valueOf(((SignHandler.ShopSign)entry.getValue()).signPost));
       counter++;
     }
+
     ConfigurationSection weaponSignsSection = this.config.createSection("WeaponSigns");
     counter = 1;
     Loc loc;
-    for (Map.Entry<String, SignHandler.ShopSign> entry : SignHandler.getWeaponSigns().entrySet())
+    for (Map.Entry entry : SignHandler.getWeaponSigns().entrySet())
     {
       loc = Loc.fromMapKey((String)entry.getKey());
       ConfigUtils.saveLocation(loc, weaponSignsSection.createSection(counter + ".Location"));
@@ -215,23 +217,26 @@ public class AnnihilationMain
       weaponSignsSection.set(counter + ".SignPost", Boolean.valueOf(((SignHandler.ShopSign)entry.getValue()).signPost));
       counter++;
     }
+
     ConfigurationSection enderFurnaceSection = this.config.createSection("EnderFurnaces");
     counter = 1;
-    for (Map.Entry<String, SignHandler.ShopSign> entry : SignHandler.getEnderFurnaces().entrySet())
+    for (Map.Entry entry : SignHandler.getEnderFurnaces().entrySet())
     {
       loc = Loc.fromMapKey((String)entry.getKey());
       ConfigUtils.saveLocation(loc, enderFurnaceSection.createSection(counter + ".Location"));
       enderFurnaceSection.set(counter + ".Direction", ((SignHandler.ShopSign)entry.getValue()).Face.toString());
       counter++;
     }
+
     ConfigurationSection regeneratingBlocksSection = this.config.createSection("RegeneratingBlocks");
-    for (Loc loc = RegeneratingBlock.getRegeneratingBlocks().entrySet().iterator(); loc.hasNext(); counter.hasNext())
+    for (Loc loc = RegeneratingBlock.getRegeneratingBlocks().entrySet().iterator(); loc.hasNext(); 
+      counter.hasNext())
     {
-      Map.Entry<Material, Map<Integer, RegeneratingBlock>> entry = (Map.Entry)loc.next();
-      
+      Map.Entry entry = (Map.Entry)loc.next();
+
       ConfigurationSection matSection = regeneratingBlocksSection.createSection(((Material)entry.getKey()).name());
-      counter = ((Map)entry.getValue()).entrySet().iterator(); continue;Map.Entry<Integer, RegeneratingBlock> map = (Map.Entry)counter.next();
-      
+      counter = ((Map)entry.getValue()).entrySet().iterator(); continue; Map.Entry map = (Map.Entry)counter.next();
+
       ConfigurationSection dataSection = matSection.createSection(((Integer)map.getKey()).toString());
       RegeneratingBlock b = (RegeneratingBlock)map.getValue();
       dataSection.set("Type", b.Type.name());
@@ -247,24 +252,23 @@ public class AnnihilationMain
       dataSection.set("ProductData", Integer.valueOf(b.ProductData));
       dataSection.set("Effect", b.Effect);
     }
+
     Area.saveAreas(this.config.createSection("Areas"));
-    
+
     StandardPhaseHandler.saveDiamonds(this.config.createSection("Diamonds"));
-    
+
     ConfigUtils.savePreciseLocation(Game.LobbyLocation, this.config.createSection("LobbyLocation"));
     try
     {
       this.config.save(this.configFile);
+    } catch (Exception localException) {
     }
-    catch (Exception localException) {}
   }
-  
-  private void loadVars()
-  {
+
+  private void loadVars() {
     File file = new File(getDataFolder().getAbsolutePath());
-    if ((!file.exists()) || (!file.isDirectory())) {
+    if ((!file.exists()) || (!file.isDirectory()))
       file.mkdir();
-    }
     this.configFile = new File(getDataFolder().getAbsolutePath() + "/AnniConfig.yml");
     try
     {
@@ -272,15 +276,14 @@ public class AnnihilationMain
         file.createNewFile();
       }
       this.config = YamlConfiguration.loadConfiguration(this.configFile);
-      
+
       useProtocalHack = this.config.getBoolean("ProtocalHack");
       if (!useProtocalHack) {
         this.config.set("ProtocalHack", Boolean.valueOf(false));
       }
       Game.GameWorld = this.config.getString("GameWorldName");
-      if (Game.GameWorld == null) {
+      if (Game.GameWorld == null)
         Game.GameWorld = "";
-      }
       ConfigurationSection teamSection;
       Location loc;
       for (AnniTeam team : AnniTeam.Teams)
@@ -289,38 +292,47 @@ public class AnnihilationMain
         if (teamSection != null)
         {
           Location nexusloc = ConfigUtils.getLocation(teamSection.getConfigurationSection("Nexus.Location"));
-          if (nexusloc != null) {
+          if (nexusloc != null)
+          {
             team.Nexus.setLocation(new Loc(nexusloc));
           }
+
           Location spectatorspawn = ConfigUtils.getLocation(teamSection.getConfigurationSection("SpectatorLocation"));
           if (spectatorspawn != null) {
             team.setSpectatorLocation(spectatorspawn);
           }
           ConfigurationSection spawns = teamSection.getConfigurationSection("Spawns");
-          if (spawns != null) {
+          if (spawns != null)
+          {
             for (String key : spawns.getKeys(false))
             {
               loc = ConfigUtils.getPreciseLocation(spawns.getConfigurationSection(key));
-              if (loc != null) {
+              if (loc != null)
+              {
                 team.addSpawn(loc);
               }
             }
           }
+
           ConfigurationSection signsSection = teamSection.getConfigurationSection("Signs");
-          if (signsSection != null) {
+          if (signsSection != null)
+          {
             for (String key : signsSection.getKeys(false))
             {
               Location loc = ConfigUtils.getLocation(signsSection.getConfigurationSection(key + ".Location"));
-              if (loc != null) {
+              if (loc != null)
+              {
                 SignHandler.addTeamSign(team, loc.getWorld().getBlockAt(loc), BlockFace.valueOf(signsSection.getString(key + ".Direction")), signsSection.getBoolean("SignPost"));
               }
             }
           }
         }
       }
+
       ConfigurationSection brewingSignsSection = this.config.getConfigurationSection("BrewingSigns");
       ConfigurationSection sign;
-      if (brewingSignsSection != null) {
+      if (brewingSignsSection != null)
+      {
         for (String key : brewingSignsSection.getKeys(false))
         {
           sign = brewingSignsSection.getConfigurationSection(key);
@@ -333,9 +345,11 @@ public class AnnihilationMain
           }
         }
       }
+
       ConfigurationSection weaponSignsSection = this.config.getConfigurationSection("WeaponSigns");
       ConfigurationSection sign;
-      if (weaponSignsSection != null) {
+      if (weaponSignsSection != null)
+      {
         for (String key : weaponSignsSection.getKeys(false))
         {
           sign = weaponSignsSection.getConfigurationSection(key);
@@ -348,9 +362,11 @@ public class AnnihilationMain
           }
         }
       }
+
       ConfigurationSection enderFurnaceSection = this.config.getConfigurationSection("EnderFurnaces");
       ConfigurationSection furnace;
-      if (enderFurnaceSection != null) {
+      if (enderFurnaceSection != null)
+      {
         for (String key : enderFurnaceSection.getKeys(false))
         {
           furnace = enderFurnaceSection.getConfigurationSection(key);
@@ -362,12 +378,15 @@ public class AnnihilationMain
           }
         }
       }
+
       ConfigurationSection regeneratingBlocksSection = this.config.getConfigurationSection("RegeneratingBlocks");
-      if (regeneratingBlocksSection != null) {
+      if (regeneratingBlocksSection != null)
+      {
         for (String key : regeneratingBlocksSection.getKeys(false))
         {
           ConfigurationSection matSection = regeneratingBlocksSection.getConfigurationSection(key);
-          if (matSection != null) {
+          if (matSection != null)
+          {
             for (String dataKey : matSection.getKeys(false))
             {
               ConfigurationSection dataSection = matSection.getConfigurationSection(dataKey);
@@ -385,7 +404,6 @@ public class AnnihilationMain
                 String amount = dataSection.getString("Amount");
                 Integer productData = Integer.valueOf(dataSection.getInt("ProductData"));
                 String effect = dataSection.getString("Effect");
-                
 
                 RegeneratingBlock.addRegeneratingBlock(new RegeneratingBlock(mat, matData.intValue(), regen, cobbleReplace, naturalBreak, time.intValue(), unit, xp.intValue(), product, amount, 
                   productData.intValue(), effect));
@@ -394,24 +412,26 @@ public class AnnihilationMain
           }
         }
       }
+
       Area.loadAreas(this.config.getConfigurationSection("Areas"));
-      
+
       StandardPhaseHandler.loadDiamonds(this.config.getConfigurationSection("Diamonds"));
-      
+
       Location loc = ConfigUtils.getPreciseLocation(this.config.getConfigurationSection("LobbyLocation"));
-      if (loc != null) {
+      if (loc != null)
+      {
         Game.LobbyLocation = loc;
       }
+
       Game.Phase = 0;
       try
       {
         this.config.save(this.configFile);
       }
-      catch (Exception localException1) {}
-      return;
+      catch (Exception localException1) {
+      }
     }
-    catch (Exception e)
-    {
+    catch (Exception e) {
       e.printStackTrace();
     }
   }
